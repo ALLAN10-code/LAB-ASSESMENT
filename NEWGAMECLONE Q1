@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Player {
+private:
+    string name;
+    int level;
+    int experience;
+
+public:
+    Player() : name("Unknown"), level(1), experience(0) {}
+    Player(string n, int l, int exp) : name(n), level(l), experience(exp) {}
+
+    Player(const Player &p) {
+        name = p.name;
+        level = p.level;
+        experience = p.experience;
+    }
+
+    void displayProfile() {
+        cout << "\nPlayer Profile: " << endl;
+        cout << "Name: " << name << endl;
+        cout << "Level: " << level << endl;
+        cout << "Experience Points: " << experience << endl;
+    }
+};
+// main program strts from here
+int main() {
+    string name;
+    int level, experience;
+
+    // Taking input from the user
+    cout << "Enter player name:";
+    getline(cin, name);
+    cout << "Enter player level: ";
+    cin >> level;
+    cout << "Enter player experience points: ";
+    cin >> experience;
+
+    // Creatign profile with the input of the user
+    Player player1(name, level, experience);
+    cout << "\nOriginal Profile:" << endl;
+    player1.displayProfile();
+
+    // copy of the plyaer
+    Player player2 = player1;
+    cout << "\nCopied Profile:" << endl;
+    player2.displayProfile();
+
+    return 0;s
+}
