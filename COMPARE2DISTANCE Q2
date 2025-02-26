@@ -1,0 +1,61 @@
+#include <iostream>
+using namespace std;
+
+class Distance {
+private:
+    int feet;
+    int inches;
+
+public:
+    Distance() : feet(0), inches(0) {}
+
+    Distance(int f, int i) : feet(f), inches(i) {}
+
+    friend void compareDistances(Distance d1, Distance d2);
+
+    void displayDistance() {
+        cout << feet << " feet " << inches << " inches" << endl;
+    }
+};
+
+void compareDistances(Distance d1, Distance d2) {
+    int totalInches1 = d1.feet * 12 + d1.inches;
+    int totalInches2 = d2.feet * 12 + d2.inches;
+
+    cout << "\nCOMPARING Distances:" << endl;
+    d1.displayDistance();
+    d2.displayDistance();
+
+    if (totalInches1 > totalInches2) {
+        cout << "First distance is greater." << endl;
+    } else if (totalInches1 < totalInches2) {
+        cout << "Second distance is greater." << endl;
+    } else {
+        cout << "Both distances are equal." << endl;
+    }
+}
+
+int main() {
+    int feet1, inches1, feet2, inches2;
+
+    // IINPUT OF FIRST DISTANCE
+    cout << "Enter feet for Distance 1: ";
+    cin >> feet1;
+    cout << "Enter inches for Distance 1: ";
+    cin >> inches1;
+
+    // INPUT OF SECOND DISTANCE 
+    cout << "\nEnter feet for Distance 2: ";
+    cin >> feet2;
+    cout << "Enter inches for Distance 2: ";
+    cin >> inches2;
+
+    // Creating distance objects with the input 
+    Distance d1(feet1, inches1);
+    Distance d2(feet2, inches2);
+
+    // Comparing distances from both inputs from the user
+    compareDistances(d1, d2);
+
+    return 0;
+}
